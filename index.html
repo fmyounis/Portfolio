@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Showcase of my software development projects built with Java, JavaScript, Python, and more.">
+    <title>My Interactive Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Press Start 2P', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background-color: #181818;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+        header {
+            text-align: center;
+            color: #00ffd5;
+            padding: 4rem 1rem;
+            position: relative;
+            background: linear-gradient(45deg, #111, #222);
+            box-shadow: 0 4px 30px rgba(0, 255, 213, 0.5);
+        }
+        header img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 1rem;
+            border: 3px solid #00ffd5;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(0, 255, 213, 0.6);
+        }
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #111;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 255, 213, 0.2);
+        }
+        nav a {
+            color: #00ffd5;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+        nav a:hover {
+            color: #ff66cc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        section {
+            margin-bottom: 4rem;
+        }
+        h2 {
+            font-size: 2.5rem;
+            color: #00ffd5;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+        #about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+            color: #ddd;
+        }
+        .certifications-header {
+            color: #ff66cc; /* Light pink */
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        .certifications {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+            list-style-type: disc;
+            color: #ff66cc; /* Light pink */
+        }
+        .project-card {
+            background: #111;
+            border: 2px solid #00ffd5;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 30px rgba(0, 255, 213, 0.3);
+        }
+        .project-card h3 {
+            font-size: 1.8rem;
+            color: #00ffd5;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 8px rgba(0, 255, 213, 0.6);
+        }
+        .project-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+        .project-card .tech-stack {
+            color: #ff66cc;
+            font-size: 1rem;
+        }
+        .project-images {
+            text-align: center;
+        }
+        .project-images img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #00ffd5;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 255, 213, 0.3);
+        }
+        .project-card .learn-more {
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            background-color: #00ffd5;
+            color: #000;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .project-card .learn-more:hover {
+            background-color: #ff66cc;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #111;
+            color: #fff;
+            margin-top: 2rem;
+            box-shadow: 0 -4px 20px rgba(0, 255, 213, 0.3);
+        }
+        /* Popup styles */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 80%;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 255, 213, 0.5);
+            text-align: center;
+        }
+        .popup h2 {
+            font-size: 2rem;
+            color: #00ffd5;
+            margin-bottom: 1rem;
+        }
+        .popup p {
+            font-size: 1.2rem;
+            color: #ff66cc;;
+            margin-bottom: 2rem;
+        }
+        .popup button {
+            background-color: #00ffd5;
+            color: #000;
+            padding: 0.5rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .popup button:hover {
+            background-color: #ff66cc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="profile.jpg" alt="My Profile Picture">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Explore my journey as a developer and the projects I passionately crafted with cutting-edge technologies.</p>
+    </header>
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#projects">Projects</a>
+        <a href="#" id="contactLink">Contact</a>
+    </nav>
+    <div id="contactPopup" class="popup" style="display:none;">
+        <div class="popup-content">
+            <span class="close" onclick="closeContactPopup()">&times;</span>
+            <h2>Contact Information</h2>
+            <p>Email: fyounis.11@gmail.com</p>
+            <p>Phone: +1-709-699-9991</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/faisal-younis21" target="_blank">https://www.linkedin.com/in/faisal-younis21</a></p>
+        </div>
+    </div>
+    
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I’m a <strong>computer science graduate</strong> specializing in <strong>smart systems</strong>, with 3 years of hands-on experience as an <strong>IT Infrastructure Support Analyst</strong>. 
+                Throughout my career, I've merged technical expertise with problem-solving skills to create intuitive and intelligent solutions. Whether it's enhancing IT infrastructure or building AI-driven applications, 
+                I’m committed to shaping the future of technology.
+            </p>
+            <p>
+                From developing advanced <strong>AI bots</strong> for games like <strong>StarCraft</strong> to designing algorithms that solve complex puzzles, I aim to push the boundaries of what’s possible. 
+                With a deep passion for <strong>security and data</strong>, I focus on creating resilient, secure, and scalable solutions for modern challenges.
+            </p>
+            <p class="certifications-header">Certifications I’m currently working towards to deepen my expertise:</p>
+            <ul class="certifications">
+                <li>AWS Certified Solutions Architect</li>
+                <li>CompTIA Security+</li>
+                <li>GIAC Security Essentials (GSEC)</li>
+            </ul>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <!-- Ricochet Robots -->
+            <div class="project-card">
+                <h3>Ricochet Robots Group Project</h3>
+                <p>A puzzle-solving game implemented in Java. Focused on object-oriented principles to build a robust game architecture.</p>
+                <p class="tech-stack">Tech Stack: Java</p>
+                <div class="project-images">
+                    <img src="ricochet1.jpg" alt="Ricochet Robots">
+                </div>
+                <a href="#" class="learn-more">Learn More</a>
+            </div>
+            <!-- Cellular Automaton -->
+            <div class="project-card">
+                <h3>Cellular Automaton</h3>
+                <p>Explores grid-based simulations using Java, highlighting algorithmic behavior like Conway's Game of Life.</p>
+                <p class="tech-stack">Tech Stack: Java</p>
+                <div class="project-images">
+                    <img src="cellular_automaton.jpg" alt="Cellular Automaton">
+                </div>
+                <a href="#" class="learn-more">Learn More</a>
+            </div>
+            <!-- A-Star Pathing Algorithm -->
+            <div class="project-card">
+                <h3>A-Star Algorithm</h3>
+                <p>Implementation of the A* search algorithm in JavaScript, focusing on pathfinding for various applications.</p>
+                <p class="tech-stack">Tech Stack: HTML</p>
+                <div class="project-images">
+                    <img src="astar_algorithm.jpg" alt="A-Star Algorithm">
+                </div>
+                <a href="#" class="learn-more">Learn More</a>
+            </div>
+            <!-- Sudoku Board Algorithm -->
+            <div class="project-card">
+                <h3>Sudoku Board Algorithm</h3>
+                <p>Solving Sudoku puzzles using Genetic Algorithms, and heuristics to ensure smart algorithmic solutions.</p>
+                <p class="tech-stack">Tech Stack: JavaScript</p>
+                <div class="project-images">
+                    <img src="sudoku_board_algorithm.jpg" alt="Sudoku Board Algorithm">
+                </div>
+                <a href="#" class="learn-more">Learn More</a>
+            </div>
+            <!-- TRON AI Bot Project -->
+            <div class="project-card">
+                <h3>TRON AI Bot Project</h3>
+                <p>Created an AI bot for the TRON game, utilizing C++ to enhance its decision-making and putting the algorithm to test by competing in competitive scenarios.</p>
+                <p class="tech-stack">Tech Stack: C++</p>
+                <div class="project-images">
+                    <img src="tron_ai_bot.jpg" alt="TRON AI Bot">
+                </div>
+                <a href="#" class="learn-more">Learn More</a>
+            </div>
+            <!-- COMP4303 StarCraft Project -->
+            <div class="project-card">
+                <h3>StarCraft BroodWar AI Bot Project</h3>
+                <p>Developed an AI that outperforms others in StarCraft, with a focus on strategic decision-making and real-time analysis. A full demonstration of this project: <a href='https://www.youtube.com/watch?v=QUu6qhrUY-8' target='_blank'>Watch the StarCraft BroodWar AI Bot in Action</a></p>
+                <p class="tech-stack">Tech Stack: C++</p>
+                <div class="project-images">
+                    <img src="starcraft_project.jpg" alt="StarCraft AI Project">
+                </div>
+                <a href="#" class="learn-more">Learn More</a>
+            </div>
+        </section>
+        </section>
+    </div>
+    <footer>
+        <p>Created by Faisal Younis. All Rights Reserved.<p>
+        <p>For any inquiries regarding collaboration, job opportunities, or just a chat, feel free to contact me!</p>
+    </footer>
+
+    <!-- Fun Fact Popup -->
+    <div id="welcomePopup" class="popup" style="display: none;">
+        <h2>HEYYA! :) I bet you didnt know:</h2>
+        <p id="funFact"></p>
+        <button onclick="closePopup()">Mind blowing no?!</button>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+       function closePopup() {
+    document.getElementById("welcomePopup").style.display = "none";
+}
+
+// Function to open the Learn More popup and update content
+function openLearnMorePopup(projectDescription) {
+    document.getElementById("projectDescription").textContent = projectDescription;
+    document.getElementById("learnMorePopup").style.display = "block";
+}
+
+// Function to close the Learn More popup
+function closeLearnMorePopup() {
+    document.getElementById("learnMorePopup").style.display = "none";
+}
+
+// Function to open the Contact Info popup
+function openContactPopup() {
+    document.getElementById("contactPopup").style.display = "block";
+}
+
+// Function to close the Contact Info popup
+function closeContactPopup() {
+    document.getElementById("contactPopup").style.display = "none";
+}
+
+// Combined window.onload function
+window.onload = function() {
+
+    if (window.location.hash) {
+        history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+
+    // Scroll to the top of the page
+    window.scrollTo(0, 0);
+
+    // Show welcome popup with a random fun fact
+    const funFacts = [
+        "The world's most advanced AI, GPT-3, has 175 billion parameters, which is more than the number of neurons in the human brain!",
+        "AI can now predict earthquakes and natural disasters by analyzing patterns in the Earth’s magnetic field, helping to save lives!",
+        "In 2019, an AI-created painting sold for over $432,000 at a major auction, challenging the very concept of art creation!",
+        "AI is capable of generating 'deepfakes,' convincing videos that alter reality so accurately, it’s nearly impossible to distinguish them from real footage!",
+        "In 2020, Google's AI researchers built an algorithm capable of solving the 3D protein folding problem, which scientists struggled with for decades.",
+        "AI has been used to predict the future with surprising accuracy, including forecasting election results and stock market fluctuations with insane precision!",
+        "The first AI to pass the 'Turing Test'—a test for determining if a machine’s behavior is indistinguishable from human behavior—was named Eugene Goostman.",
+        "AI is now capable of creating fully functional software and algorithms with no human input, an advancement known as 'autoML' (automated machine learning).",
+        "AI systems can diagnose diseases like cancer from medical images with higher accuracy than human doctors, potentially saving millions of lives.",
+        "AI has been trained to compose symphonies and create original music with emotional depth, even composing pieces in the style of famous composers like Beethoven!",
+        "One AI algorithm, trained on historical data, predicted the exact outcome of a major sporting event, before it even happened.",
+        "AI is enabling 'quantum computing,' where quantum bits allow computers to perform calculations that would take classical computers billions of years in seconds!",
+        "AI-powered robots are being trained to design themselves, constantly improving their own architecture and capabilities in a loop of self-improvement!",
+        "AI can decode and understand human emotions by analyzing facial expressions, tone of voice, and body language, enabling more empathetic virtual assistants.",
+        "AI systems are now capable of writing entire books, news articles, and essays with compelling narratives, changing the future of publishing and journalism.",
+        "AI is being used to map the human brain in 3D with unprecedented detail, advancing our understanding of how consciousness and thoughts emerge.",
+        "Researchers are using AI to design completely new materials with properties we’ve never seen before, potentially leading to futuristic technologies.",
+        "AI is teaching itself to play video games like human experts, even surpassing the best human players in games such as Dota 2, StarCraft II, and Go!",
+        "In 2018, an AI-generated 'song' became a hit on Spotify, showing how AI could revolutionize music creation in the future!",
+        "AI can learn to make predictions based on emotional cues, predicting human actions with nearly 95% accuracy in some studies—mind-blowing, right?"
+    ];
+
+    const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
+    document.getElementById("funFact").innerText = randomFact;
+    document.getElementById("welcomePopup").style.display = "block";
+
+
+    // Add event listeners to each "Learn More" button
+    const learnMoreButtons = document.querySelectorAll('.learn-more');
+    const projectDescriptions = [
+        "As part of a collaborative team project, I contributed to the development of the Ricochet Robots board game, a dynamic puzzle-solving game where players must move robots across a grid to reach a target. This project provided invaluable experience in both software engineering and team collaboration. We worked together on GitHub, where each team member was assigned specific tasks aimed at building and refining the various game functionalities. This structure allowed me to gain hands-on experience with both frontend and backend development, contributing to the creation of intuitive user interfaces as well as robust game logic. One unique aspect of our project was the implementation of a version of the game for visually impaired users. This feature aimed to make the game more accessible by providing audio cues and alternative navigation options, allowing visually impaired players to enjoy the game without limitations. It was an important part of the project that highlighted the value of inclusivity in software design and broadened my understanding of designing applications for diverse user needs.",
+        "This project implements several versions of cellular automata, including Conway's Game of Life and other patterns such as Random (R), Spaceship (L), and Pulsar (P). It showcases my skills in Java and object-oriented programming, providing a flexible framework for simulating various cellular automaton behaviors. Key features include the simulation of Conway's Game of Life, random initialization of cells, spaceship and pulsar patterns, and user input for customizing grid size, magnification, and pattern type. The project demonstrates my ability to work with algorithms and Java syntax, as well as my understanding of complex systems emerging from simple rules. Example usage: java Cellular 10 100 R runs the cellular automaton for 10 steps on a 100x100 grid with a random pattern.",
+        "This project implements the A* algorithm for pathfinding, a project that I thoroughly enjoyed working on. The core challenge was using heuristics to make decision-making smarter within the algorithm, allowing it to find the most efficient paths between two points on a map. I implemented A* to navigate a customizable grid, where different cells can have varying costs, adding a layer of complexity to the pathfinding process. Additionally, I integrated Breadth-First Search (BFS) and Depth-First Search (DFS) algorithms, enabling the comparison of different pathfinding strategies. The customizable map feature made it possible to test the algorithms in more complex scenarios, improving the A* algorithm's performance and testing its ability to find the fastest routes. This project deepened my understanding of graph theory, heuristics, and the importance of optimization in algorithm design.",
+        "This project implements a Sudoku board game solver using genetic algorithms and heuristics. The solver applies different algorithms to solve the puzzle, with strategies like column match, row match, and sum of boxes. These algorithms allow the system to evaluate potential solutions and make decisions based on matching numbers and grid constraints. A key feature of the project was the integration of a fitness graph, which tracks the efficiency of the algorithm in real-time, helping to visualize the progress of the genetic algorithm. This visualization shows how the population of candidate solutions evolves over time, ultimately converging toward a solution. The project highlights my skills in algorithmic problem-solving, genetic algorithms, and heuristics, and demonstrates my ability to implement complex systems with optimization techniques. By using multiple heuristics and providing a clear fitness indicator, I was able to optimize the solver and create a more efficient solution process.",
+        "This project focuses on creating an AI bot for the TRON game, designed to outperform the built-in bot by strategically covering more cells while avoiding self-trapping or collisions. The algorithm was developed to compete from different starting points on the grid and adapt to dynamic gameplay scenarios. A significant aspect of the project involved implementing various path exploration strategies to optimize movement in competitive scenarios, including games with multiple bots. By simulating different possibilities, the AI bot could effectively balance offensive and defensive moves, aiming to maximize covered cells without compromising its survival. This project showcases my ability to implement intelligent decision-making algorithms, explore competitive strategies, and develop efficient solutions for complex, dynamic environments.",
+        "This project involved developing a highly competitive AI bot for StarCraft: BroodWar using the BroodWar API. The bot was specifically designed to maximize the strategic abilities of Zerglings and execute smart plans for a Zerg Rush to secure game victories. A key feature of the bot was its ability to scout enemy bases quickly, utilizing efficient scouting algorithms to locate the enemy as early as possible. It positioned troops strategically in the middle of the map to minimize travel time to the enemy base and prioritized attacking enemy units that could retaliate before focusing on structures. Additionally, the bot performed a Breadth-First Search (BFS) algorithm to scout for any remaining enemy units, ensuring complete dominance. The bot demonstrated a high winning rate against all other races, thanks to its adaptive strategies and real-time decision-making. This project highlights my skills in algorithm design, strategic gameplay planning, and real-time API usage to achieve competitive outcomes."
+    ];
+
+    learnMoreButtons.forEach((button, index) => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            openLearnMorePopup(projectDescriptions[index]);
+        });
+    });
+    
+
+
+    // Add event listener for "Contact" link
+    document.getElementById("contactLink").addEventListener('click', function(event) {
+        event.preventDefault();  // Prevent default behavior of anchor tag
+        openContactPopup();
+    });
+};
+
+
+
+    </script>
+    <!-- Learn More Popup -->
+<div id="learnMorePopup" class="popup" style="display: none;">
+    <h2>Project Details</h2>
+    <p id="projectDescription"></p>
+    <button onclick="closeLearnMorePopup()">Close</button>
+</div>
+
+</body>
+</html>
